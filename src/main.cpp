@@ -56,9 +56,9 @@ void drawCross(cv::Mat & img,cv::Point center,cv::Scalar color,int d ) {
 
 
 cv::Point mousePos;
-float process_noise = 1e-5f;
 float measure_noise = 10.f;
-float error_cov = 0.2f;
+float process_noise = 1e-5f;
+float error_cov = 0.1f;
 char * name_window = "KalmanMouse";
 
 void mouseCallback(int event, int x, int y, int flags, void* param) {
@@ -134,10 +134,10 @@ int main( ) {
 	cv::Point prev_p = mousePos;
 	while(1) {
 		
-		if(mousePos.x == prev_p.x && prev_p.y == mousePos.y) {
-			if(waitKey(10)==27)break;  
-			continue;
-		}
+// 		if(mousePos.x == prev_p.x && prev_p.y == mousePos.y) {
+// 			if(waitKey(10)==27)break;  
+// 			continue;
+// 		}
 		Mat_<float> measurement(2,1);
 		measurement.at<float>(0) = float(mousePos.x+ random.gaussian(measure_noise));
 		measurement.at<float>(1) = float(mousePos.y+ random.gaussian(measure_noise));
