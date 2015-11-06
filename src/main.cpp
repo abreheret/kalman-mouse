@@ -1,6 +1,5 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/video/tracking.hpp"
-#include <Windows.h>
 
 using namespace cv;
 using namespace std;
